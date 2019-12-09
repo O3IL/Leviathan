@@ -96,6 +96,8 @@ namespace QuickPad.UI
 
             Settings.PropertyChanged += Settings_PropertyChanged;
 
+            ViewModel.SetScale += ViewModel_SetScale;
+
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += this.OnCloseRequest;
 
             var currentView = SystemNavigationManager.GetForCurrentView();
@@ -103,6 +105,16 @@ namespace QuickPad.UI
 
             commandBar.SetFontName += CommandBarOnSetFontName;
             commandBar.SetFontSize += CommandBarOnSetFontSize;
+        }
+
+        public void ViewModel_SetScale(float scale)
+        {
+            TextScrollViewer.ChangeView(0.0, 0.0, ViewModel.ScaleValue);
+        }
+
+        private void TextScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            ViewModel.ScaleValue = TextScrollViewer.ZoomFactor;
         }
 
         private void OnGotFocus(object sender, RoutedEventArgs e)
@@ -397,15 +409,26 @@ namespace QuickPad.UI
 
         private async void MainPage_OnKeyUp(object sender, KeyRoutedEventArgs args)
         {
-            var controlDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control)
-                .HasFlag(CoreVirtualKeyStates.Down);
+            var controlDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control) .HasFlag(CoreVirtualKeyStates.Down);
             var menuDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.Menu).HasFlag(CoreVirtualKeyStates.Down);
-            var shiftDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.Shift)
-                .HasFlag(CoreVirtualKeyStates.Down);
-            var leftWindowsDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.LeftWindows)
-                .HasFlag(CoreVirtualKeyStates.Down);
-            var rightWindowsDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.RightWindows)
-                .HasFlag(CoreVirtualKeyStates.Down);
+            var shiftDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.Shift) .HasFlag(CoreVirtualKeyStates.Down);
+            var leftWindowsDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.LeftWindows) .HasFlag(CoreVirtualKeyStates.Down);
+            var rightWindowsDown = Window.Current.CoreWindow.GetKeyState(VirtualKey.RightWindows) .HasFlag(CoreVirtualKeyStates.Down);
+
+            if (controlDown & args.Key == (VirtualKey)187)
+            {
+                Commands.ZoomIn.Execute(ViewModel);
+            }
+
+            if (controlDown & args.Key == (VirtualKey)189)
+            {
+                Commands.ZoomOut.Execute(ViewModel);
+            }
+
+            if (controlDown & args.Key == (VirtualKey)48)
+            {
+                Commands.ResetZoom.Execute(ViewModel);
+            }
 
             var option = (c: controlDown, s: shiftDown, m: menuDown, l: leftWindowsDown, r: rightWindowsDown, k: args.Key);
 
@@ -429,7 +452,6 @@ namespace QuickPad.UI
             Settings.CurrentMode = newMode;
 
             Settings.Status($"{Settings.CurrentModeText} Enabled.", TimeSpan.FromSeconds(5), SettingsViewModel.Verbosity.Debug);
-
         }
 
         private void RichEditBox_OnContextMenuOpening(object sender, ContextMenuEventArgs e)
