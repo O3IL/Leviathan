@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: This project thrives from differentiation from competing apps. Suggest an idea
-  for Quick Pad
+  for Leviathan
 title: ''
 labels: enhancement
 assignees: ''

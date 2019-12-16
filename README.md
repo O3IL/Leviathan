@@ -1,20 +1,20 @@
 <p align="center">
-  <img alt="Quick Pad Logo" src="QuickPad.UI/QuickPad.UI/Assets/StoreLogo.scale-400.png" width="100px" />
-  <h1 align="center">Quick-Pad</h1>
+  <img alt="Leviathan Logo" src="Leviathan.UI/Leviathan.UI/Assets/StoreLogo.scale-400.png" width="100px" />
+  <h1 align="center">Leviathan</h1>
 </p>
 
 <p align="center">
   <a style="text-decoration:none" href="https://www.microsoft.com/store/apps/9PDLWQHTLSV3">
     <img src="https://img.shields.io/badge/Microsoft%20Store-Download-orange.svg?style=flat-square" alt="Store link" />
   </a>
-  <a style="text-decoration:none" href="https://github.com/UWPCommunity/Quick-Pad/releases">
-    <img src="https://img.shields.io/github/release/UWPCommunity/Quick-Pad.svg?style=flat-square" alt="Releases" />
+  <a style="text-decoration:none" href="https://github.com/UWPCommunity/Leviathan/releases">
+    <img src="https://img.shields.io/github/release/UWPCommunity/Leviathan.svg?style=flat-square" alt="Releases" />
   </a>
-  <a style="text-decoration:none" href="https://github.com/UWPCommunity/Quick-Pad/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/UWPCommunity/Quick-Pad?style=flat-square" alt="Contributors" />
+  <a style="text-decoration:none" href="https://github.com/UWPCommunity/Leviathan/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/UWPCommunity/Leviathan?style=flat-square" alt="Contributors" />
   </a>
-  <a style="text-decoration:none" href="https://github.com/UWPCommunity/Quick-Pad/stargazers">
-    <img src="https://img.shields.io/github/stars/UWPCommunity/Quick-Pad.svg?style=flat-square" alt="Stars" />
+  <a style="text-decoration:none" href="https://github.com/UWPCommunity/Leviathan/stargazers">
+    <img src="https://img.shields.io/github/stars/UWPCommunity/Leviathan.svg?style=flat-square" alt="Stars" />
   </a>
 </p>
 
@@ -31,8 +31,8 @@
 * Tabs.
 
 ## Downloads:
-* Get the latest version of Quick Pad in the [Microsoft Store](https://www.microsoft.com/store/productId/9PDLWQHTLSV3).
-* Download the latest release from [Github Releases](https://github.com/UWPCommunity/Quick-Pad/releases).
+* Get the latest version of Leviathan in the [Microsoft Store](https://www.microsoft.com/store/productId/9PDLWQHTLSV3).
+* Download the latest release from [Github Releases](https://github.com/UWPCommunity/Leviathan/releases).
 
 ## Dependencies and References:
 * [Windows Community Toolkit](https://github.com/windows-toolkit/WindowsCommunityToolkit)

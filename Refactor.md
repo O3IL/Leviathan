@@ -1,13 +1,13 @@
-# Quick Pad Refactor
+# Leviathan Refactor
 
 ## Architecture
 
 The application is split into four projects:
 
-* QuickPad.UI - User interface layer - only contains XAML and code behind
-* QuickPad.Mvvm - Model layer - only contains ViewModels and Models
-* QuickPad.Data - Data Access layer - only contains Persistance.
-* QuickPad.Mvc - Controller and View Definition layer - only contains View definitions and the ApplicationController.
+* Leviathan.UI - User interface layer - only contains XAML and code behind
+* Leviathan.Mvvm - Model layer - only contains ViewModels and Models
+* Leviathan.Data - Data Access layer - only contains Persistance.
+* Leviathan.Mvc - Controller and View Definition layer - only contains View definitions and the ApplicationController.
 
 ### Data Flow
 
