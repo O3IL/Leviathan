@@ -33,9 +33,9 @@
             <Image Source="/Assets/StoreLogo.scale-200.png" Stretch="Fill" Width="80" Height="80" HorizontalAlignment="Right" Grid.RowSpan="2"/>
                 <TextBlock Text="Leviathan" Grid.Column="1" FontSize="22" x:Uid="AppName" Padding="12,0,0,0"/>
                 <TextBlock Text="{x:Bind Settings.VersionNumberText}" Grid.Column="1" Grid.Row="1" Padding="12,0,0,0"/>
-            </Grid>            
-                        
-            <TextBlock Text="Developed by O3IL" FontSize="16" HorizontalAlignment="Left" x:Uid="CreatedBy" Padding="0,12,0,0"/>
+            </Grid>
+
+            <TextBlock Text="Developed with ❤️ by O3IL" FontSize="16" HorizontalAlignment="Left" x:Uid="CreatedBy" Padding="0,12,0,0"/>
 
             <TextBlock Text="Source Code" HorizontalAlignment="Left" Padding="0,4,0,0" x:Uid="SourceCode"/>
             <HyperlinkButton Content="https://github.com/O3IL/Leviathan" NavigateUri="https://github.com/O3IL/Leviathan" FontSize="13" Padding="0"/>

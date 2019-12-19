@@ -123,18 +123,6 @@
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem Text="Search with Bing..." AccessKey="S" x:Uid="SearchBing"
-                                Command="{x:Bind Commands.SearchWithBing}"
-                                CommandParameter="{x:Bind ViewModel}">
-                    <MenuFlyoutItem.Icon>
-                        <FontIcon Glyph="&#xE12B;" />
-                    </MenuFlyoutItem.Icon>
-                    <MenuFlyoutItem.KeyboardAccelerators>
-                        <KeyboardAccelerator
-                          Modifiers="Control" 
-                           Key="E" />
-                    </MenuFlyoutItem.KeyboardAccelerators>
-                </MenuFlyoutItem>
                 <MenuFlyoutItem Text="Find" AccessKey="F" Icon="Find" x:Uid="Find" 
                                 Command="{x:Bind Commands.ShowFindCommand}"
                                 CommandParameter="{x:Bind ViewModel}"> 

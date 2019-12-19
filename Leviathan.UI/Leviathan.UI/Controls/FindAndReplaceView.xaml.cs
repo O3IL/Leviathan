@@ -48,5 +48,9 @@ namespace Leviathan.UI.Controls
             }
         }
 
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }

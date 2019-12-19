@@ -135,7 +135,6 @@
     <Compile Include="Commands\Actions\ZoomOut.cs" />
     <Compile Include="Commands\Actions\ZoomIn.cs" />
     <Compile Include="Commands\Actions\UpdateToolbar.cs" />
-    <Compile Include="Commands\Actions\SearchWithBing.cs" />
     <Compile Include="Commands\Actions\ExportSettingsCommand.cs" />
     <Compile Include="Commands\Actions\RateAndReviewCommand.cs" />
     <Compile Include="Commands\Actions\FocusCommand.cs" />
@@ -146,12 +145,9 @@
     <Compile Include="Commands\Actions\CompactOverlay.cs" />
     <Compile Include="Commands\Actions\ShowMenusCommand.cs" />
     <Compile Include="Commands\Actions\ShowSettingsCommand.cs" />
-    <Compile Include="Commands\Editing\CenterAlignCommand.cs" />
     <Compile Include="Commands\Editing\BulletsCommand.cs" />
-    <Compile Include="Commands\Editing\BoldCommand.cs" />
     <Compile Include="Commands\Clipboard\CopyCommand.cs" />
     <Compile Include="Commands\Clipboard\CutCommand.cs" />
-    <Compile Include="Commands\Editing\ColorCommand.cs" />
     <Compile Include="IApplication.cs" />
     <Compile Include="Models\DefaultLanguageModel.cs" />
     <Compile Include="Models\Theme\IVisualThemeSelector.cs" />
@@ -163,15 +159,11 @@
     <Compile Include="ViewModels\DisplayMode.cs" />
     <Compile Include="ViewModels\DisplayModes.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
-    <Compile Include="Commands\Editing\ItalicCommand.cs" />
-    <Compile Include="Commands\Editing\EmojiCommand.cs" />
     <Compile Include="Commands\Clipboard\PasteCommand.cs" />
     <Compile Include="Commands\Editing\JustifyCommand.cs" />
-    <Compile Include="Commands\Editing\LeftAlignCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Commands\LeviathanCommands.cs" />
     <Compile Include="Commands\Editing\RedoCommand.cs" />
-    <Compile Include="Commands\Editing\RightAlignCommand.cs" />
     <Compile Include="ViewModels\FindAndReplaceViewModel.cs" />
     <Compile Include="ViewModels\NotifyOnResetAttribute.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />

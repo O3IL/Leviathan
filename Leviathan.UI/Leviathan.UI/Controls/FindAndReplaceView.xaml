@@ -55,69 +55,60 @@
                      PlaceholderText="Looking for?"
                      VerticalAlignment="Center"
                      x:Uid="FindFilter"
-                     Margin="4"
+                     Margin="-1"
                      Text="{x:Bind ViewModel.SearchPattern, Mode=TwoWay}"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
-        <!-- Next/Previous -->
-        <muxc:SplitButton Padding="4" 
-                    Margin="4"
-                    CornerRadius="2"
-                    Width="Auto"
-                    Height="32"
-                    Style="{ThemeResource SplitButtonRevealStyle}" 
+        <StackPanel Orientation="Horizontal" Grid.Row="0" winui:Grid.Column="2" Margin="5,-1,-3,0">
+            <!-- Next/Previous -->
+
+            <Button Margin="4" 
+                    Padding="4" 
+                    Width="32"
+                    Height="32" 
+                    Command="{x:Bind Commands.FindPreviousCommand}"
+                    CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}"
+                    Style="{ThemeResource ButtonRevealStyle}" Click="Button_Click">
+                <FontIcon Glyph="&#xE0A6;" FontSize="16"/>
+                <ToolTipService.ToolTip>
+                    <TextBlock x:Uid="FindPrevious" Text="Find Previous" />
+                </ToolTipService.ToolTip>
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="F3"/>
+                </Button.KeyboardAccelerators>
+            </Button>
+
+            <Button Margin="4" 
+                    Padding="4" 
+                    Width="32"
+                    Height="32" 
                     Command="{x:Bind Commands.FindNextCommand}"
-                    CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}">
-            <StackPanel>
+                    CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}"
+                    Style="{ThemeResource ButtonRevealStyle}" Click="Button_Click">
                 <FontIcon Glyph="&#xE0AB;" FontSize="16"/>
                 <ToolTipService.ToolTip>
-                    <TextBlock x:Uid="FindNext" Text="FindNext"/>
+                    <TextBlock x:Uid="FindNext" Text="Find Next" />
                 </ToolTipService.ToolTip>
-            </StackPanel>
-            <muxc:SplitButton.Flyout>
-                <MenuFlyout Placement="BottomEdgeAlignedRight">
-                    <MenuFlyoutItem x:Uid="FindNext"
-                                    Text="Find Next" 
-                                    Command="{x:Bind Commands.FindNextCommand}"
-                                    CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}">
-                        <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE0AB;"/>
-                        </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="F3" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Uid="FindPrevious"
-                                    Text="Find Previous" 
-                                    Command="{x:Bind Commands.FindPreviousCommand}"
-                                    CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}">
-                        <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE0A6;" />
-                        </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="F3" Modifiers="Shift" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                </MenuFlyout>
-            </muxc:SplitButton.Flyout>
-        </muxc:SplitButton>
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="F3"/>
+                </Button.KeyboardAccelerators>
+            </Button>
 
-        <!-- Close dialog button-->
-        <Button Margin="4" 
+            <!-- Close dialog button-->
+            <Button Margin="4" 
                     Padding="4" 
                     Width="32"
                     Height="32" 
                     Command="{x:Bind Commands.HideFindCommand}"
                     CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}"
-                    Style="{ThemeResource ButtonRevealStyle}">
-            <FontIcon Glyph="&#xE10A;" FontSize="16"/>
-            <ToolTipService.ToolTip>
-                <TextBlock x:Uid="FindClose" Text="Close"/>
-            </ToolTipService.ToolTip>
-            <Button.KeyboardAccelerators>
-                <KeyboardAccelerator Key="Escape"/>
-            </Button.KeyboardAccelerators>
-        </Button>
+                    Style="{ThemeResource ButtonRevealStyle}" Click="Button_Click">
+                <FontIcon Glyph="&#xE10A;" FontSize="16"/>
+                <ToolTipService.ToolTip>
+                    <TextBlock x:Uid="FindClose" Text="Close"/>
+                </ToolTipService.ToolTip>
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="Escape"/>
+                </Button.KeyboardAccelerators>
+            </Button>
         </StackPanel>
         <!-- END OF Find Row -->
 
@@ -127,52 +118,59 @@
         <Grid></Grid>
         <!-- Replace Row (Second) -->
         <!-- Replace TextBox -->
-        <TextBox Grid.Row="1"
-                     Grid.Column="1"
-                     HorizontalAlignment="Stretch" 
-                     VerticalAlignment="Center"
-                     Margin="4"
+        <TextBox winui:Grid.Row="1" 
+                     VerticalAlignment="Top"
+                     Margin="4,0,38,0"
                      Text="{x:Bind ViewModel.ReplacePattern, Mode=TwoWay}"
                      PlaceholderText="Replace with.."
                      x:Uid="FindReplaceWith"
-                     Visibility="{x:Bind DocumentViewModel.ShowReplace, Converter={StaticResource Converter}, Mode=OneWay}"/>
+                     Visibility="{x:Bind DocumentViewModel.ShowReplace, Converter={StaticResource Converter}, Mode=OneWay}" winui:Grid.ColumnSpan="2"/>
 
-        <StackPanel Grid.Row="1"
-                    Grid.Column="2" Orientation="Horizontal" Visibility="{x:Bind DocumentViewModel.ShowReplace, Converter={StaticResource Converter}, Mode=OneWay}">
-        <!-- Replace button -->
-        <Button Padding="4" 
+        <StackPanel
+                    winui:Grid.Column="1" Orientation="Horizontal" Visibility="{x:Bind DocumentViewModel.ShowReplace, Converter={StaticResource Converter}, Mode=OneWay}" winui:Grid.ColumnSpan="2" Margin="150,-4,-10,0" winui:Grid.RowSpan="4" Height="40" winui:Grid.Row="1" VerticalAlignment="Top">
+            <!-- Replace button -->
+            <Button Padding="4" 
                     Margin="4"
                     Width="32"
                     Height="32" 
                     Command="{x:Bind Commands.ReplaceNextCommand}"
                     CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}"
                     Style="{ThemeResource ButtonRevealStyle}">
-            <FontIcon Glyph="&#xE8AC;" FontSize="16"/>
-            <ToolTipService.ToolTip>
-                <TextBlock x:Uid="FindReplace" Text="Replace"/>
-            </ToolTipService.ToolTip>
-        </Button>
+                <FontIcon Glyph="&#xE8AC;" FontSize="16"/>
+                <ToolTipService.ToolTip>
+                    <TextBlock x:Uid="FindReplace" Text="Replace"/>
+                </ToolTipService.ToolTip>
+            </Button>
 
-        <!-- Replace all button -->
-        <Button Padding="4" 
+            <!-- Replace all button -->
+            <Button Padding="4" 
                     Margin="4"
-                    Width="34"
+                    Width="32"
                     Height="32" 
                     Command="{x:Bind Commands.ReplaceAllCommand}"
                     CommandParameter="{x:Bind DocumentViewModel, Mode=OneWay}"
                     Style="{ThemeResource ButtonRevealStyle}">
-            <FontIcon Glyph="&#xE8B3;" FontSize="16"/>
-            <ToolTipService.ToolTip>
-                <TextBlock x:Uid="FindReplaceAll" Text="Replace all"/>
-            </ToolTipService.ToolTip>
-        </Button>
-        </StackPanel>
-        <!-- END OF Replace Row -->
+                <FontIcon Glyph="&#xE8B3;" FontSize="16"/>
+                <ToolTipService.ToolTip>
+                    <TextBlock x:Uid="FindReplaceAll" Text="Replace all"/>
+                </ToolTipService.ToolTip>
+            </Button>
 
+            <ToggleButton Grid.Row="1"
+                Grid.Column="1" 
+                Padding="4" 
+                Margin="4"
+                Width="32"
+                Height="32"
+                IsChecked="{x:Bind ViewModel.UseRegex, Mode=TwoWay}"
+                Style="{ThemeResource ToggleButtonRevealStyle}">
+                <FontIcon FontFamily="{StaticResource RegExIcon}" Glyph="&#xEB38;" FontSize="16"/>
+                <ToolTipService.ToolTip>
+                    <TextBlock x:Uid="FindRegEx" Text="Regular Expression"/>
+                </ToolTipService.ToolTip>
+            </ToggleButton>
 
-        <!-- Options Row (Third) -->
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Visibility="{x:Bind DocumentViewModel.ShowReplace, Converter={StaticResource Converter}, Mode=OneWay}">
-                <ToggleButton Content="&#xE8E9;"
+            <ToggleButton Content="&#xE8E9;"
                       FontFamily="Segoe MDL2 Assets"
                       IsEnabled="{Binding UseRegex, Converter={StaticResource Converter}, ConverterParameter=Invert, Mode=OneWay}"
                       IsChecked="{x:Bind ViewModel.MatchCase, Mode=TwoWay}" 
@@ -182,30 +180,17 @@
                       Height="32"
                       FontSize="16"
                       Style="{ThemeResource ToggleButtonRevealStyle}">
-                    <ToolTipService.ToolTip>
-                        <TextBlock x:Uid="FindMatchCase" Text="Match Case"/>
-                    </ToolTipService.ToolTip>
-                </ToggleButton>
-
-                <!-- Regex button -->
-                <ToggleButton Grid.Row="1"
-                Grid.Column="1" 
-                Padding="4" 
-                Margin="4"
-                Width="32"
-                Height="32"
-                IsChecked="{x:Bind ViewModel.UseRegex, Mode=TwoWay}"
-                Style="{ThemeResource ToggleButtonRevealStyle}">
-                    <FontIcon FontFamily="{StaticResource RegExIcon}" Glyph="&#xEB38;" FontSize="16"/>
-                    <ToolTipService.ToolTip>
-                        <TextBlock x:Uid="FindRegEx" Text="Regular Expression"/>
-                    </ToolTipService.ToolTip>
-                </ToggleButton>
-            </StackPanel>
-            <!-- END OF Options -->
-
-       
+                <ToolTipService.ToolTip>
+                    <TextBlock x:Uid="FindMatchCase" Text="Match Case"/>
+                </ToolTipService.ToolTip>
+            </ToggleButton>
+        </StackPanel>
         <!-- END OF Replace Row -->
-        </Grid>
-    
+
+
+
+
+
+    </Grid>
+
 </UserControl>

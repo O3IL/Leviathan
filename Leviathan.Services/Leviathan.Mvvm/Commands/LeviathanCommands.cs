@@ -42,18 +42,18 @@ namespace Leviathan.Mvvm.Commands
         public SimpleCommand<DocumentViewModel> PasteCommand { get; }
         public SimpleCommand<DocumentViewModel> DeleteCommand { get; } = new DeleteCommand();
 
-        public SimpleCommand<DocumentViewModel> EmojiCommand { get; } = new EmojiCommand();
+        //public SimpleCommand<DocumentViewModel> EmojiCommand { get; } = new EmojiCommand();
 
-        public SimpleCommand<DocumentViewModel> BoldCommand { get; } = new BoldCommand();
-        public SimpleCommand<DocumentViewModel> ItalicsCommand { get; } = new ItalicCommand();
+        //public SimpleCommand<DocumentViewModel> BoldCommand { get; } = new BoldCommand();
+        //public SimpleCommand<DocumentViewModel> ItalicsCommand { get; } = new ItalicCommand();
         public SimpleCommand<DocumentViewModel> UnderlineCommand { get; } = new UnderlineCommand();
         public SimpleCommand<DocumentViewModel> StrikeThroughCommand { get; } = new StrikeThroughCommand();
         public SimpleCommand<DocumentViewModel> BulletsCommand { get; } = new BulletsCommand();
-        public SimpleCommand<DocumentViewModel> LeftAlignCommand { get; } = new LeftAlignCommand();
-        public SimpleCommand<DocumentViewModel> CenterAlignCommand { get; } = new CenterAlignCommand();
-        public SimpleCommand<DocumentViewModel> RightAlignCommand { get; } = new RightAlignCommand();
+        //public SimpleCommand<DocumentViewModel> LeftAlignCommand { get; } = new LeftAlignCommand();
+        //public SimpleCommand<DocumentViewModel> CenterAlignCommand { get; } = new CenterAlignCommand();
+        //public SimpleCommand<DocumentViewModel> RightAlignCommand { get; } = new RightAlignCommand();
         public SimpleCommand<DocumentViewModel> JustifyCommand { get; } = new JustifyCommand();
-        public SimpleCommand<DocumentViewModel> ColorCommand { get; } = new ColorCommand();
+        //public SimpleCommand<DocumentViewModel> ColorCommand { get; } = new ColorCommand();
 
         public SimpleCommand<DocumentViewModel> ToggleWordWrapCommand { get; } = new ToggleWordWrapCommand(); 
         //actions
@@ -76,7 +76,7 @@ namespace Leviathan.Mvvm.Commands
         public SimpleCommand<DocumentViewModel> ReplaceAllCommand { get; } = new ReplaceAllCommand();
         public SimpleCommand<DocumentViewModel> SelectAllCommand { get; } = new SelectAllCommand();
         public SimpleCommand<DocumentViewModel> InsertTimeDateCommand { get; } = new InsertTimeDateCommand();
-        public SimpleCommand<DocumentViewModel> SearchWithBing { get; } = new SearchWithBing();
+        //public SimpleCommand<DocumentViewModel> SearchWithBing { get; } = new SearchWithBing();
         public SimpleCommand<DocumentViewModel> UpdateToolbar { get; } = new UpdateToolbar();
         public SimpleCommand<DocumentViewModel> ZoomIn { get; } = new ZoomIn();
         public SimpleCommand<DocumentViewModel> ZoomOut { get; } = new ZoomOut();
