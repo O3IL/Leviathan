@@ -6,10 +6,22 @@
   Leviathan
 </h1>
 
-[![GitHub Issues](https://img.shields.io/github/issues/O3IL/Leviathan.svg?style=flat-square)](https://github.com/O3IL/Leviathan/issues)
-[![Github Release](https://img.shields.io/github/release/O3IL/Leviathan.svg?style=flat-square)](https://github.com/O3IL/Leviathan/releases/latest)
-[![GitHub Downloads](https://img.shields.io/github/downloads/O3IL/Leviathan/total.svg?style=flat-square)](https://github.com/O3IL/Leviathan/releases/)
-[![GitHub Contributors](https://img.shields.io/github/contributors/O3IL/Leviathan?style=flat-square)](https://github.com/O3IL/Leviathan/graphs/contributors)
-[![GitHub Stars](https://img.shields.io/github/stars/O3IL/Leviathan.svg?style=flat-square)](https://github.com/O3IL/Leviathan/stargazers)
+<p align="center">
+  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/issues">
+    <img src="https://img.shields.io/github/issues/O3IL/Leviathan.svg?style=flat-square" alt="GitHub Issues" />
+  </a>
+  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/releases/latest">
+    <img src="https://img.shields.io/github/release/O3IL/Leviathan.svg?label=latest%20version&style=flat-square" alt="Github Release" />
+  </a>
+  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/issues">
+    <img src="https://img.shields.io/github/downloads/O3IL/Leviathan/total.svg?style=flat-square" alt="GitHub Downloads" />
+  </a>
+  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/O3IL/Leviathan?style=flat-square" alt="GitHub Contributors" />
+  </a>
+  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/stargazers">
+    <img src="https://img.shields.io/github/stars/O3IL/Leviathan.svg?style=flat-square" alt="GitHub Stars" />
+  </a>
+</p>
 
 _This application was develop with ❤️ by [O3IL](https://github.com/O3IL/Leviathan)_
