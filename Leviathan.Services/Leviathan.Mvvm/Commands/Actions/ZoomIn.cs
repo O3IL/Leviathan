@@ -5,9 +5,9 @@ using System;
 
 namespace Leviathan.Mvvm.Commands.Editing
 {
-    public class ZoomIn : SimpleCommand<DocumentViewModel>
+    public class ZoomInCommand : SimpleCommand<DocumentViewModel>
     {
-        public ZoomIn()
+        public ZoomInCommand()
         {
             Executioner = viewModel =>
             {

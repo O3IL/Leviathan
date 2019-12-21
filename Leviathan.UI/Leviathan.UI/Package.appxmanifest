@@ -14,7 +14,7 @@
   <Identity
     Name="49306atecsolution.Leviathan"
     Publisher="CN=Francois-Joseph"
-    Version="1.1.7.0" />
+    Version="1.1.8.0" />
 
   <mp:PhoneIdentity PhoneProductId="ebdd657c-a08c-42fd-a71a-136226dba487" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -71,7 +71,7 @@
         <uap:Extension Category="windows.fileTypeAssociation" >
           <uap:FileTypeAssociation Name="richtext-file" >
             <uap:SupportedFileTypes>
-              <uap:FileType ContentType="application/rtf">.rtf</uap:FileType>
+              <uap:FileType ContentType="text/rtf">.rtf</uap:FileType>
             </uap:SupportedFileTypes>
             <uap:DisplayName>Rich Text Document</uap:DisplayName>
             <uap:InfoTip>Rich Text File</uap:InfoTip>
@@ -80,13 +80,13 @@
           </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="text-document">
+          <uap:FileTypeAssociation Name="text-file">
             <uap:SupportedFileTypes>
               <uap:FileType ContentType="text/plain">.txt</uap:FileType>
             </uap:SupportedFileTypes>
             <uap:DisplayName>Text Document</uap:DisplayName>
             <uap:Logo>A Unplated.png</uap:Logo>
-            <uap:InfoTip>Text Document</uap:InfoTip>
+            <uap:InfoTip>Text File</uap:InfoTip>
             <uap:EditFlags OpenIsSafe="true"/>
           </uap:FileTypeAssociation>
         </uap:Extension>
@@ -101,6 +101,17 @@
             <uap:Logo>A Unplated.png</uap:Logo>
           </uap:FileTypeAssociation>
         </uap:Extension>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="markdown-file">
+            <uap:SupportedFileTypes>
+              <uap:FileType ContentType="markdown/text">.md</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>Markdown Document</uap:DisplayName>
+            <uap:Logo>A Unplated.png</uap:Logo>
+            <uap:InfoTip>Markdown File</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
       </Extensions>
     </Application>
   </Applications>
@@ -108,5 +119,6 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <rescap:Capability Name="confirmAppClose"/>
+    <DeviceCapability Name="proximity"/>
   </Capabilities>
 </Package>

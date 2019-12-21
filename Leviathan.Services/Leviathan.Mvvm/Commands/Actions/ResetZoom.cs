@@ -5,13 +5,13 @@ using System;
 
 namespace Leviathan.Mvvm.Commands.Editing
 {
-    public class ResetZoom : SimpleCommand<DocumentViewModel>
+    public class ResetZoomCommand : SimpleCommand<DocumentViewModel>
     {
-        public ResetZoom()
+        public ResetZoomCommand()
         {
             Executioner = viewModel =>
             {
-                viewModel.ScaleValue = 1;
+                viewModel.ScaleValue = 1f;
 
                 return Task.CompletedTask;
             };

@@ -5,9 +5,9 @@ using System;
 
 namespace Leviathan.Mvvm.Commands.Editing
 {
-    public class UpdateToolbar : SimpleCommand<DocumentViewModel>
+    public class UpdateToolbarCommand : SimpleCommand<DocumentViewModel>
     {
-        public UpdateToolbar()
+        public UpdateToolbarCommand()
         {
             Executioner = viewModel =>
             {
