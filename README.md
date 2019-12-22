@@ -10,8 +10,8 @@
   <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/issues">
     <img src="https://img.shields.io/github/issues/O3IL/Leviathan.svg?style=flat-square" alt="GitHub Issues" />
   </a>
-  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/releases/latest">
-    <img src="https://img.shields.io/github/release/O3IL/Leviathan.svg?label=latest%20version&style=flat-square" alt="Github Release" />
+  <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/releases/releases">
+    <img src="https://img.shields.io/github/release/O3IL/Leviathan.svg?style=flat-square" alt="Github Releases" />
   </a>
   <a style="text-decoration:none" href="https://github.com/O3IL/Leviathan/issues">
     <img src="https://img.shields.io/github/downloads/O3IL/Leviathan/total.svg?style=flat-square" alt="GitHub Downloads" />
