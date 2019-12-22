@@ -50,7 +50,6 @@
                       SelectedItem="{x:Bind Settings.DefaultFileType, Mode=TwoWay}"
                       Background="{x:Bind VTSelector.CurrentItem.InAppAcrylicBrush, Mode=OneWay}" HorizontalAlignment="Left">
                 <x:String>.txt</x:String>
-                <x:String>.rtf</x:String>
             </ComboBox>
 
             <TextBlock Text="Default File Encoding" x:Uid="DefaultFileEncoding"/>

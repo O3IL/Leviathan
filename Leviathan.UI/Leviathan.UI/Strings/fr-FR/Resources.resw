@@ -577,7 +577,7 @@
     <comment>Used on Settings Page</comment>
   </data>
   <data name="PlainTextFontSettings.Text" xml:space="preserve">
-    <value>Paramètres de police du texte ordinaire</value>
+    <value>Paramètres de police du texte</value>
     <comment>Used on Settings Page</comment>
   </data>
   <data name="ReportIssues.Text" xml:space="preserve">

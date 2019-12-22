@@ -714,7 +714,7 @@
         </trans-unit>
         <trans-unit id="PlainTextFontSettings.Text" translate="yes" xml:space="preserve">
           <source>Plain Text Font Settings</source>
-          <target state="translated">Paramètres de police du texte ordinaire</target>
+          <target state="translated">Paramètres de police du texte</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Used on Settings Page</note>
         </trans-unit>
         <trans-unit id="ReportIssues.Text" translate="yes" xml:space="preserve">

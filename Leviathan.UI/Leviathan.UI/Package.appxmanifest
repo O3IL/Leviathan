@@ -14,7 +14,7 @@
   <Identity
     Name="49306atecsolution.Leviathan"
     Publisher="CN=Francois-Joseph"
-    Version="1.1.8.0" />
+    Version="1.1.9.0" />
 
   <mp:PhoneIdentity PhoneProductId="ebdd657c-a08c-42fd-a71a-136226dba487" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -67,17 +67,6 @@
               <uap:SupportsAnyFileType/>
             </uap:SupportedFileTypes>
           </uap:FileOpenPicker>
-        </uap:Extension>
-        <uap:Extension Category="windows.fileTypeAssociation" >
-          <uap:FileTypeAssociation Name="richtext-file" >
-            <uap:SupportedFileTypes>
-              <uap:FileType ContentType="text/rtf">.rtf</uap:FileType>
-            </uap:SupportedFileTypes>
-            <uap:DisplayName>Rich Text Document</uap:DisplayName>
-            <uap:InfoTip>Rich Text File</uap:InfoTip>
-            <uap:EditFlags OpenIsSafe="true"/>
-            <uap:Logo>A Unplated.png</uap:Logo>
-          </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name="text-file">
