@@ -70,6 +70,8 @@ namespace Leviathan.UI
             Logger = logger;
             Commands = command;
 
+            Clipboard.ContentChanged += Clipboard_ContentChanged;
+
             GotFocus += OnGotFocus;
 
             App.Controller.AddView(this);
@@ -112,6 +114,11 @@ namespace Leviathan.UI
                 WelcomeDialog dialog = new WelcomeDialog();
                 _ = dialog.ShowAsync();
             }
+        }
+
+        private void Clipboard_ContentChanged(object sender, object e)
+        {
+            Commands.ContentChangedCommand.Execute(ViewModel);
         }
 
         public void ViewModel_SetScale(float scale)
@@ -358,7 +365,7 @@ namespace Leviathan.UI
                 : (TextBox.SelectionStart, TextBox.SelectionLength);
         }
 
-        private async Task ViewModelOnSetSelection(int start, int length)
+        private void ViewModelOnSetSelection(int start, int length, bool reindex = true)
         {
             try
             {
@@ -366,16 +373,14 @@ namespace Leviathan.UI
                 {
                     _viewModel.Document.Selection.StartPosition = start;
                     _viewModel.Document.Selection.EndPosition = start + length;
-                    await FocusManager.TryFocusAsync(RichEditBox, FocusState.Programmatic);
                 }
                 else
                 {
                     TextBox.SelectionStart = start;
                     TextBox.SelectionLength = length;
-                    await FocusManager.TryFocusAsync(TextBox, FocusState.Programmatic);
                 }
 
-                Reindex();
+                if (reindex) Reindex();
             }
             catch (Exception ex)
             {
@@ -548,12 +553,12 @@ namespace Leviathan.UI
             }
         }
 
-        private async void TextBox_OnKeyDown(object sender, KeyRoutedEventArgs e)
+        private void TextBox_OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key != VirtualKey.Tab || Window.Current.CoreWindow.GetKeyState(VirtualKey.Shift)
                     .HasFlag(CoreVirtualKeyStates.Down)) return;
 
-            await ViewModel.AddTab();
+            ViewModel.AddTab();
 
             e.Handled = true;
         }

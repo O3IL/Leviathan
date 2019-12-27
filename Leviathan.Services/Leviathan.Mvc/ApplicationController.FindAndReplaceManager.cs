@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
@@ -11,121 +12,149 @@ using Leviathan.Mvvm.ViewModels;
 
 namespace Leviathan.Mvc
 {
-    /// <summary>
-    /// </summary>
     public partial class ApplicationController
     {
-        /// <summary>
-        /// </summary>
         private static class FindAndReplaceManager
         {
-            /// <summary>
-            /// </summary>
-            /// <param name="settings"></param>
-            /// <param name="text"></param>
-            /// <param name="arg"></param>
-            /// <returns></returns>
-            public static async Task<(string text, string match, int start, int length)[]> ReplaceAll(SettingsViewModel settings, string text, DocumentViewModel arg)
+            public static (string text, string match, int start, int length)[] ReplaceAll(
+                SettingsViewModel settings, string text, DocumentViewModel viewModel)
             {
-                await arg.SelectText(0, 0);
+                var count = 0;
+                var offset = -1;
+                viewModel.SelectText(0, 0, false);
+
                 (string text, string match, int start, int length) current = default;
 
                 var results = new List<(string text, string match, int start, int length)>();
 
                 // ReSharper disable once ComplexConditionExpression
-                while ((current = await ReplaceNext(settings, text, arg)).start > -1)
+                while ((current = ReplaceNext(settings, text, offset, viewModel)).start > -1)
                 {
                     text = current.text;
                     results.Add(current);
+                    offset = current.start + 1;
+                    count++;
                 }
+
+                settings.Status($"Made {count} replacements."
+                    , TimeSpan.FromMinutes(1)
+                    , SettingsViewModel.Verbosity.Release);
 
                 return results.ToArray();
             }
 
-            /// <summary>
-            /// </summary>
-            /// <param name="settings"></param>
-            /// <param name="text"></param>
-            /// <param name="arg"></param>
-            /// <returns></returns>
-            public static async Task<(string text, string match, int start, int length)> ReplaceNext(SettingsViewModel settings, string text, DocumentViewModel arg)
+            public static (string text, string match, int start, int length) ReplaceNext(
+                SettingsViewModel settings, string text, int offset, DocumentViewModel viewModel)
             {
-                var (txt, match, start, length) = await SearchNext(settings, text, arg);
+                var (txt, match, start, length) = SearchNext(settings, text, offset, viewModel);
 
-                if (start > -1)
+                if (length <= 0 || match == null) return (txt, match, start, length);
+
+                var pattern = viewModel.FindAndReplaceViewModel.ReplacePattern;
+
+                viewModel.SelectText(start, length, false);
+
+                var sb = new StringBuilder(txt);
+
+                if (viewModel.FindAndReplaceViewModel.UseRegex)
                 {
-                    //arg.SelectText(match.start, match.length);
-                    //arg.SelectedText = arg.FindAndReplaceViewModel.ReplacePattern;
-
-                    if (!arg.FindAndReplaceViewModel.UseRegex)
+                    var regex = new Regex(viewModel.FindAndReplaceViewModel.SearchPattern);
+                    var matches = regex.Match(match);
+                    for (var i = matches.Groups.Count; i >= 2; --i)
                     {
-                        var sb = new StringBuilder(txt);
-                        sb.Replace(match, arg.FindAndReplaceViewModel.ReplacePattern, start, length);
-                        txt = sb.ToString();
-                    }
-                    else
-                    {
-                        
+                        var plug = $"${i - 1}";
+                        pattern = pattern.Replace(plug, matches.Groups[i - 1].Value);
                     }
                 }
+
+
+                sb.Replace(match, pattern, start, length);
+
+                txt = sb.ToString();
+                viewModel.SelectedText = pattern;
+                viewModel.SelectText(start, pattern.Length, true);
 
                 return (txt, match, start, length);
             }
 
-            public static async Task<(string text, string match, int start, int length)> SearchPrevious(SettingsViewModel settings, string text, DocumentViewModel arg)
+            public static (string text, string match, int start, int length) SearchPrevious(SettingsViewModel settings, string text, int offset, DocumentViewModel viewModel)
             {
-                if (string.IsNullOrWhiteSpace(arg.FindAndReplaceViewModel.SearchPattern))
-                    return default;
+                if (string.IsNullOrWhiteSpace(viewModel.FindAndReplaceViewModel.SearchPattern)) return (text, null, -1, 0);
 
-                var (start, _) = arg.CurrentPosition;
-
-                var txt = text ?? arg.Text;
-                var searchable = txt.Substring(0, start);
-                var pattern = arg.FindAndReplaceViewModel.SearchPattern;
-                var matchCase = arg.FindAndReplaceViewModel.MatchCase;
-                var useRegex = arg.FindAndReplaceViewModel.UseRegex;
+                var pattern = viewModel.FindAndReplaceViewModel.SearchPattern;
+                var matchCase = viewModel.FindAndReplaceViewModel.MatchCase;
+                var useRegex = viewModel.FindAndReplaceViewModel.UseRegex;
                 const SearchDirection direction = SearchDirection.Backward;
+                var canContinue = true;
 
-                var result = Search(settings, searchable, pattern, useRegex, matchCase, direction);
+                while (canContinue)
+                {
+                    if (offset == -1 || useRegex) canContinue = false;
 
-                if (result.start == -1) return result;
+                    var start = offset;
 
-                result.text = txt;
-                await arg.SelectText(result.start, result.length);
+                    text ??= viewModel.Text ?? string.Empty;
+                    var searchable = text.Substring(0, start);
 
-                return result;
+                    var result = Search(settings, searchable, pattern, useRegex, matchCase, direction);
+
+                    if (result.start == -1)
+                    {
+                        offset = text.Length;
+                        continue;
+                    }
+
+                    result.text = text;
+                    viewModel.SelectText(result.start, result.length, false);
+
+                    return result;
+                }
+
+                return (text, null, -1, 0);
             }
 
-            public static async Task<(string text, string match, int start, int length)> SearchNext(SettingsViewModel settings, string text,
-                DocumentViewModel arg)
+            public static (string text, string match, int start, int length) SearchNext(SettingsViewModel settings, string text, int offset, DocumentViewModel viewModel)
             {
-                if (string.IsNullOrWhiteSpace(arg.FindAndReplaceViewModel.SearchPattern))
-                    return default;
+                if (string.IsNullOrWhiteSpace(viewModel.FindAndReplaceViewModel.SearchPattern)) return (text, null, -1, 0);
 
-                var (start, _) = arg.CurrentPosition;
-
-                var txt = text ?? arg.Text;
-                var searchable = txt.Substring(start + 1);
-                var pattern = arg.FindAndReplaceViewModel.SearchPattern;
-                var matchCase = arg.FindAndReplaceViewModel.MatchCase;
-                var useRegex = arg.FindAndReplaceViewModel.UseRegex;
+                var pattern = viewModel.FindAndReplaceViewModel.SearchPattern;
+                var matchCase = viewModel.FindAndReplaceViewModel.MatchCase;
+                var useRegex = viewModel.FindAndReplaceViewModel.UseRegex;
                 const SearchDirection direction = SearchDirection.Forwards;
+                var canContinue = true;
 
-                var result = Search(settings, searchable, pattern, useRegex, matchCase, direction);
+                while (canContinue)
+                {
+                    if (offset == -1 || useRegex) canContinue = false;
 
-                if (result.start == -1) return result;
+                    text ??= viewModel.Text ?? string.Empty;
+                    if (offset == text.Length) offset = -1;
+                    var start = Math.Min(offset, text.Length - 1);
+                    var searchable = text.Substring(start + 1);
 
-                result.text = txt;
-                result.start += start + 1;
-                await arg.SelectText(result.start, result.length);
+                    var result = Search(settings, searchable, pattern, useRegex, matchCase, direction);
 
-                return result;
+                    if (result.start == -1)
+                    {
+                        offset = -1;
+                        continue;
+                    }
+
+                    result.text = text;
+                    result.start += start + 1;
+                    viewModel.SelectText(result.start, result.length, false);
+
+                    return result;
+                }
+
+                return (text, null, -1, 0);
             }
 
             private enum SearchDirection { Forwards, Backward }
 
-            private static (string text, string match, int start, int length) Search(SettingsViewModel settings, string searchable, string pattern, bool useRegex, bool matchCase, SearchDirection direction)
-            { 
+            private static (string text, string match, int start, int length) Search(
+                SettingsViewModel settings, string searchable, string pattern, bool useRegex, bool matchCase, SearchDirection direction)
+            {
                 string result;
                 var index = -1;
                 var length = 0;
@@ -148,10 +177,6 @@ namespace Leviathan.Mvc
 
                     if (index <= -1)
                     {
-                        settings.Status($"{pattern} not find in the {direction} direction."
-                            , TimeSpan.FromSeconds(30)
-                            , SettingsViewModel.Verbosity.Debug);
-
                         return (null, null, index, length);
                     }
 
@@ -175,10 +200,6 @@ namespace Leviathan.Mvc
 
                     if (!(match?.Success ?? false))
                     {
-                        settings.Status($"{pattern} not find in the {direction} direction."
-                            , TimeSpan.FromSeconds(30)
-                            , SettingsViewModel.Verbosity.Debug);
-
                         return (null, null, index, length);
                     }
 
