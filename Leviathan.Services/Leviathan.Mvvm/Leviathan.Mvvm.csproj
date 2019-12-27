@@ -131,11 +131,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\Actions\AcknowledgeFontSelectionChangeCommand.cs" />
-    <Compile Include="Commands\Actions\ResetZoom.cs" />
+    <Compile Include="Commands\Actions\ResetZoomCommand.cs" />
     <Compile Include="Commands\Actions\ShowGoToCommand.cs" />
-    <Compile Include="Commands\Actions\ZoomOut.cs" />
-    <Compile Include="Commands\Actions\ZoomIn.cs" />
-    <Compile Include="Commands\Actions\UpdateToolbar.cs" />
+    <Compile Include="Commands\Actions\ZoomOutCommand.cs" />
+    <Compile Include="Commands\Actions\ZoomInCommand.cs" />
+    <Compile Include="Commands\Actions\UpdateToolbarCommand.cs" />
     <Compile Include="Commands\Actions\ExportSettingsCommand.cs" />
     <Compile Include="Commands\Actions\RateAndReviewCommand.cs" />
     <Compile Include="Commands\Actions\FocusCommand.cs" />
@@ -146,6 +146,7 @@
     <Compile Include="Commands\Actions\CompactOverlay.cs" />
     <Compile Include="Commands\Actions\ShowMenusCommand.cs" />
     <Compile Include="Commands\Actions\ShowSettingsCommand.cs" />
+    <Compile Include="Commands\Clipboard\ContentChangedCommand.cs" />
     <Compile Include="Commands\Editing\BulletsCommand.cs" />
     <Compile Include="Commands\Clipboard\CopyCommand.cs" />
     <Compile Include="Commands\Clipboard\CutCommand.cs" />
@@ -220,7 +221,6 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
