@@ -757,4 +757,8 @@
     <value>Line number:</value>
     <comment>Used on GoTo Dialog</comment>
   </data>
+  <data name="ThemeAccentName" xml:space="preserve">
+    <value>System Accent Color</value>
+    <comment>Used on Theme Page</comment>
+  </data>
 </root>

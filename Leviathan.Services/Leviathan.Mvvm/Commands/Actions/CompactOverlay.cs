@@ -20,7 +20,7 @@ namespace Leviathan.Mvvm.Commands.Actions
                 }
                 else
                 {
-                    settings.ShowCompactOverlayTip = false; //hide the CompactOverlayTip if its visible
+                    //settings.ShowCompactOverlayTip = false; //hide the CompactOverlayTip if its visible
                     settings.CurrentMode = nameof(DisplayModes.LaunchCompactOverlay); //change the mode to CompactOverlay
                     var modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay); //switch to the correct mode
                 }

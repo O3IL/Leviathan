@@ -283,13 +283,29 @@
         </MenuBar>
 
         <controls:TeachingTip 
-            x:Uid="CompactOverlayTip"
-            Title="Keep on top of other Windows" 
-            Target="{x:Bind CompactOverlayButton}" 
-            PreferredPlacement="LeftBottom"                   
-	        Subtitle="With compact overlay you can make Quick Pad stay on top of other windows."
-            IsOpen="{x:Bind Settings.ShowCompactOverlayTip}"/>
-        
+            x:Uid="WelcomeTip"
+            Title="Welcome!" 
+            PreferredPlacement="Center"                   
+	        Subtitle="The Leviathan is the only fluent and UWP editor for coding for the TI calulators, it was open-source, based on Quick-Pad and develop with ❤️ by O3IL. Good work 😎"
+            IsOpen="{x:Bind Settings.ShowWelcomeTip}"/>
+
+        <AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="Type a control name"
+        TextChanged="AutoSuggestBox_TextChanged"
+        QueryIcon="Find"
+        QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+        Background="{x:Bind VTSelector.CurrentItem.InAppAcrylicBrush, Mode=OneWay}"
+        SuggestionChosen="AutoSuggestBox_SuggestionChosen" Margin="1115,0,141,0" VerticalAlignment="Center">
+            <winui:ListViewItem Content="ListViewItem"/>
+        </AutoSuggestBox>
+        <RelativePanel x:Name="ControlDetails" Grid.Row="1" HorizontalAlignment="Left" Visibility="Collapsed" Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
+                        Margin="0,8,0,0">
+            <Image x:Name="ControlImage" Height="110"  />
+            <TextBlock x:Name="ControlTitle" Style="{StaticResource BaseTextBlockStyle}"
+                            RelativePanel.RightOf="ControlImage" Margin="8,0,0,0" />
+            <TextBlock x:Name="ControlSubtitle" TextWrapping="WrapWholeWords" RelativePanel.Below="ControlTitle"
+                            RelativePanel.AlignLeftWith="ControlTitle" Margin="8,0,0,0" />
+        </RelativePanel>
+
         <CommandBar DefaultLabelPosition="Collapsed" IsOpen="False" HorizontalAlignment="Right" Height="40" Background="{x:Null}"
                     Visibility="{x:Bind converters:Converter.VisibleIfMenuMode(Settings.CurrentMode)}">
             <AppBarButton MinWidth="40" Width="Auto" 
