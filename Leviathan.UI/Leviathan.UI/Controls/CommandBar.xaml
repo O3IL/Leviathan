@@ -21,7 +21,7 @@
             <TextBlock Text="{Binding}" FontFamily="{Binding}" Margin="2,2,2,2" FontSize="12"/>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid HorizontalAlignment="Stretch" Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}">
+    <Grid HorizontalAlignment="Stretch" Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}">
         <CommandBar DefaultLabelPosition="Right" IsOpen="False" HorizontalAlignment="Left" Background="{x:Null}" VerticalAlignment="Top" Height="40" Margin="0,0,208,0">
             <AppBarButton x:Uid="NewLabel" Width="Auto" MinWidth="40" LabelPosition="Collapsed" 
                           Command="{x:Bind Commands.NewDocumentCommand}" 
@@ -81,7 +81,7 @@
                         </Flyout.FlyoutPresenterStyle>
                         <ListView Width="250" Height="350"
                                           x:Name="FontListSelection"
-                                          Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
+                                          Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
                                           ItemsSource="{x:Bind Settings.AllFonts, Mode=OneWay}"
                                           ItemTemplate="{StaticResource FontFamilyComboBoxItem}"
                                           CharacterReceived="TryToFindFont"
@@ -104,51 +104,13 @@
                         </Flyout.FlyoutPresenterStyle>
                         <ListView Width="Auto" Height="350"
                                   x:Name="FontSizeListSelection"
-                                  Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
+                                  Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
                                   ItemsSource="{x:Bind Settings.AllFontSizes, Mode=OneWay}"
                                   SelectedItem="{x:Bind ViewModel.CurrentFontSize, Mode=TwoWay}"/>
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
             <AppBarSeparator Visibility="{x:Bind ViewModel.IsRtf, Converter={StaticResource Converter}, Mode=OneWay}"/>
-            <AppBarToggleButton x:Uid="StrikethroughLabel" LabelPosition="Collapsed" Width="Auto" MinWidth="40"
-                                Visibility="{x:Bind ViewModel.IsRtf, Converter={StaticResource Converter}, Mode=OneWay}"
-                                IsChecked="{x:Bind ViewModel.SelStrikethrough, Mode=TwoWay}"
-                                Command="{x:Bind Commands.StrikeThroughCommand}"
-                                CommandParameter="{x:Bind ViewModel}">
-                <ToolTipService.ToolTip>
-                    <TextBlock x:Uid="Strikethrough" Text="Strikethrough"/>
-                </ToolTipService.ToolTip>
-                <AppBarToggleButton.Icon>
-                    <FontIcon Margin="0,4,0,-3" FontFamily="/Assets/Font/Segoe MDL2 Modded.ttf#Segoe MDL2 Modded" Glyph="&#xE1B2;">
-                        <FontIcon.RenderTransform>
-                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
-                        </FontIcon.RenderTransform>
-                    </FontIcon>
-                </AppBarToggleButton.Icon>
-            </AppBarToggleButton>
-            <AppBarToggleButton x:Uid="BulletsLabel" LabelPosition="Collapsed" Width="Auto" MinWidth="40" Icon="List"
-                                Visibility="{x:Bind ViewModel.IsRtf, Converter={StaticResource Converter}, Mode=OneWay}"
-                                IsChecked="{x:Bind ViewModel.SelBullets, Mode=TwoWay}"
-                                Command="{x:Bind Commands.BulletsCommand}"
-                                CommandParameter="{x:Bind ViewModel}">
-                <ToolTipService.ToolTip>
-                    <TextBlock x:Uid="Bullets" Text="Toggle Bullets"/>
-                </ToolTipService.ToolTip>
-            </AppBarToggleButton>
-            <AppBarSeparator Visibility="{x:Bind ViewModel.IsRtf, Converter={StaticResource Converter}, Mode=OneWay}"/>
-            <AppBarToggleButton x:Uid="JustifyTextLabel" LabelPosition="Collapsed" Width="Auto" MinWidth="40"
-                                Visibility="{x:Bind ViewModel.IsRtf, Converter={StaticResource Converter}, Mode=OneWay}"
-                                IsChecked="{x:Bind ViewModel.SelJustify, Mode=TwoWay}"
-                                Command="{x:Bind Commands.JustifyCommand}"
-                                CommandParameter="{x:Bind ViewModel}">
-                <ToolTipService.ToolTip>
-                    <TextBlock x:Uid="JustifyText" Text="Justify Text (Ctrl+J)"/>
-                </ToolTipService.ToolTip>
-                <AppBarToggleButton.Icon>
-                    <FontIcon FontFamily="/Assets/Font/FabExMDL2.ttf#Fabric External MDL2 Assets" Glyph=""/>
-                </AppBarToggleButton.Icon>
-            </AppBarToggleButton>
         </CommandBar>
 
         <CommandBar DefaultLabelPosition="Collapsed" IsOpen="False" HorizontalAlignment="Right" Height="40" Background="{x:Null}">

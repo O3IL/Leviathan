@@ -135,7 +135,6 @@
           <source>Developed with ❤️ by O3IL</source>
           <target state="needs-review-translation">Developpé avec ❤️ par O3IL</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Used on Settings Page</note>
-          
         </trans-unit>
         <trans-unit id="Cut.Text" translate="yes" xml:space="preserve">
           <source>Cut</source>
@@ -806,6 +805,11 @@
           <source>Line number:</source>
           <target state="new">Line number:</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Used on GoTo Dialog</note>
+        </trans-unit>
+        <trans-unit id="ThemeAccentName" translate="yes" xml:space="preserve">
+          <source>System Accent Color</source>
+          <target state="new">System Accent Color</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used on Theme Page</note>
         </trans-unit>
       </group>
     </body>

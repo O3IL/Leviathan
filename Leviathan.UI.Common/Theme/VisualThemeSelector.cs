@@ -93,7 +93,14 @@ namespace Leviathan.UI.Common.Theme
             SystemUI.ColorValuesChanged += SystemThemeChanged;
 
             //Select here from settings:
-            ThemesView.MoveCurrentToFirst();
+            if (string.IsNullOrWhiteSpace(_settingsViewModel.CustomThemeId))
+            {
+                ThemesView.MoveCurrentToFirst();
+            }
+            else
+            {
+                ThemesView.MoveCurrentTo(_themes.FirstOrDefault(t => t.ThemeId == _settingsViewModel.CustomThemeId));
+            }
             //
         }
 
@@ -111,6 +118,7 @@ namespace Leviathan.UI.Common.Theme
             if (!(ThemesView.CurrentItem is VisualTheme theme)) return;
 
             SettingsItem = theme;
+            _settingsViewModel.CustomThemeId = theme.ThemeId;
 
             switch (theme.Kind)
             {
@@ -206,6 +214,10 @@ namespace Leviathan.UI.Common.Theme
                 PreviewBrush = rdmPreview
             };
 
+            //System Accent Color theme:
+            _themes.Add(BuildTheme("accent", "ThemeAccentName", false, (Color)Resources["SystemAccentColor"]));
+
+            //Random theme:
             _themes.Add(rdm);
 
             //Custom light themes:
