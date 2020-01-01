@@ -10,7 +10,7 @@ namespace Leviathan.UI.Common.Dialogs
 {
     public sealed partial class WelcomeDialog
     {
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
         public LeviathanCommands Commands { get; }
 
         public WelcomeDialog()

@@ -11,7 +11,7 @@
     d:DesignHeight="40"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <Grid HorizontalAlignment="Stretch" Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}">
+    <Grid HorizontalAlignment="Stretch" Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}">
         <MenuBar Height="40" HorizontalAlignment="Left" Width="Auto">
             <MenuBarItem Title="File" AccessKey="F" x:Uid="File">
                 <MenuFlyoutItem Text="New" AccessKey="N" x:Uid="New" 
@@ -126,7 +126,7 @@
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem Text="Find" AccessKey="F" Icon="Find" x:Uid="Find" 
                                 Command="{x:Bind Commands.ShowFindCommand}"
-                                CommandParameter="{x:Bind ViewModel}"> 
+                                CommandParameter="{x:Bind ViewModel}">
                     <MenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator
                           Modifiers="Control" 
@@ -207,7 +207,7 @@
                                 CommandParameter="{x:Bind Settings}">
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Font"/>
-                    </MenuFlyoutItem.Icon>                    
+                    </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
             </MenuBarItem>
             <MenuBarItem Title="View" AccessKey="V" x:Uid="View">
@@ -232,7 +232,7 @@
                         <FontIcon Glyph="&#xEE49;" FontFamily="/Assets/Font/CalcMDL2.ttf#Calculator MDL2 Assets"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
-                <MenuFlyoutSeparator/>  
+                <MenuFlyoutSeparator/>
                 <MenuFlyoutSubItem Text="Zoom" AccessKey="Z" x:Uid="Zoom">
                     <MenuFlyoutSubItem.Icon>
                         <FontIcon Glyph="&#xE92D;"/>
@@ -293,11 +293,11 @@
         TextChanged="AutoSuggestBox_TextChanged"
         QueryIcon="Find"
         QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-        Background="{x:Bind VTSelector.CurrentItem.InAppAcrylicBrush, Mode=OneWay}"
-        SuggestionChosen="AutoSuggestBox_SuggestionChosen" Margin="1115,0,141,0" VerticalAlignment="Center">
+        Background="{x:Bind VtSelector.CurrentItem.InAppAcrylicBrush, Mode=OneWay}"
+        SuggestionChosen="AutoSuggestBox_SuggestionChosen" Margin="0,0,141,0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="244">
             <winui:ListViewItem Content="ListViewItem"/>
         </AutoSuggestBox>
-        <RelativePanel x:Name="ControlDetails" Grid.Row="1" HorizontalAlignment="Left" Visibility="Collapsed" Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
+        <RelativePanel x:Name="ControlDetails" Grid.Row="1" HorizontalAlignment="Left" Visibility="Collapsed" Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
                         Margin="0,8,0,0">
             <Image x:Name="ControlImage" Height="110"  />
             <TextBlock x:Name="ControlTitle" Style="{StaticResource BaseTextBlockStyle}"

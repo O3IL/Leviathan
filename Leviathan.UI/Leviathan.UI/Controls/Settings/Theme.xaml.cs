@@ -23,7 +23,7 @@ namespace Leviathan.UI.Controls.Settings
 {
     public sealed partial class Theme : Page
     {
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
         public SettingsViewModel Settings => App.Settings;
 
         public Theme()

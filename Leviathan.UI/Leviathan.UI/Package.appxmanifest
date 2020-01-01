@@ -14,7 +14,7 @@
   <Identity
     Name="49306atecsolution.Leviathan"
     Publisher="CN=Francois-Joseph"
-    Version="1.1.12.0" />
+    Version="1.1.13.0" />
 
   <mp:PhoneIdentity PhoneProductId="ebdd657c-a08c-42fd-a71a-136226dba487" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

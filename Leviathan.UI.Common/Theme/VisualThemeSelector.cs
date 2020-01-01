@@ -257,6 +257,15 @@ namespace Leviathan.UI.Common.Theme
                 TintOpacity = (_settingsViewModel.BackgroundTintOpacity + .05) > 1 ? 1 : _settingsViewModel.BackgroundTintOpacity + .05
             };
 
+            var backgroundAcrylicAccent = new AcrylicBrush
+            {
+                BackgroundSource = AcrylicBackgroundSource.Backdrop,
+                FallbackColor = accentColor,
+                TintColor = accentColor,
+                TintOpacity = (_settingsViewModel.BackgroundTintOpacity + -.25) < 0 ? 0 : _settingsViewModel.BackgroundTintOpacity - .25
+            };
+
+
             var etheme = (lightTheme) ? ElementTheme.Light : ElementTheme.Dark;
 
             var descriptionResKey = (lightTheme) 
@@ -271,6 +280,7 @@ namespace Leviathan.UI.Common.Theme
                 Theme = etheme,
                 BackgroundAcrylicBrush = backgroundAcrylic,
                 BackgroundAcrylicBrush2 = backgroundAcrylic2,
+                BackgroundAcrylicAccent = backgroundAcrylicAccent,
                 InAppAcrylicBrush = inAppAcrylic,
                 SolidBackgroundBrush = new SolidColorBrush(accentColor),
                 PreviewBrush = new SolidColorBrush(accentColor),

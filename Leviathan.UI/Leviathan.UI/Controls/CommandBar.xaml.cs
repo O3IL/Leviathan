@@ -26,7 +26,7 @@ namespace Leviathan.UI.Controls
         }
 
 
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
 
         public SettingsViewModel Settings => App.Settings;
         

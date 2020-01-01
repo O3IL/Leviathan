@@ -14,7 +14,7 @@ namespace Leviathan.UI.Controls
 {
     public sealed partial class TitleBar : UserControl
     {
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
 
         public SettingsViewModel Settings => App.Settings;
 

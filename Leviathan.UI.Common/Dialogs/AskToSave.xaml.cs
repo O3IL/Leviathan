@@ -11,7 +11,7 @@ namespace Leviathan.UI.Common.Dialogs
     public sealed partial class AskToSave
     {
         private DocumentViewModel _viewModel;
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
         public LeviathanCommands Commands { get; }
 
         public DocumentViewModel ViewModel
