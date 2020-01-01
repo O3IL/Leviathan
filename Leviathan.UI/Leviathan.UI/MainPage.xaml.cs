@@ -58,7 +58,7 @@ namespace Leviathan.UI
     {
         private DocumentViewModel _viewModel;
         private readonly bool _initialized;
-        public IVisualThemeSelector VTSelector { get; }
+        public IVisualThemeSelector VtSelector { get; }
         public SettingsViewModel Settings => App.Settings;
         public LeviathanCommands Commands { get; }
         private ILogger<MainPage> Logger { get; }
@@ -66,7 +66,7 @@ namespace Leviathan.UI
         public MainPage(ILogger<MainPage> logger, DocumentViewModel viewModel
             , LeviathanCommands command, IVisualThemeSelector vts)
         {
-            VTSelector = vts;
+            VtSelector = vts;
             Logger = logger;
             Commands = command;
 

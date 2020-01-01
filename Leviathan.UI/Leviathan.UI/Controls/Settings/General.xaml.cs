@@ -24,7 +24,7 @@ namespace Leviathan.UI.Controls.Settings
 {
     public sealed partial class General : Page
     {
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
         public SettingsViewModel Settings { get; } = App.Settings;
 
         public General()

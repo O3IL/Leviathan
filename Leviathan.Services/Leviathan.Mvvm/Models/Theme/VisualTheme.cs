@@ -83,6 +83,12 @@ namespace Leviathan.Mvvm.Models.Theme
             set;
         }
 
+        public Brush BackgroundAcrylicAccent
+        {
+            get;
+            set;
+        }
+
         public override string ToString()
         {
             return FriendlyName;
@@ -93,6 +99,7 @@ namespace Leviathan.Mvvm.Models.Theme
         {
             ((AcrylicBrush) BackgroundAcrylicBrush).TintOpacity = to;
             ((AcrylicBrush) BackgroundAcrylicBrush2).TintOpacity = to + .15;
+            ((AcrylicBrush)BackgroundAcrylicAccent).TintOpacity = to - .25;
             ((AcrylicBrush) InAppAcrylicBrush).TintOpacity = to;
         }
 

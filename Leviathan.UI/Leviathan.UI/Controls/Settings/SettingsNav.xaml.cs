@@ -26,7 +26,7 @@ namespace Leviathan.UI.Controls.Settings
 {
     public sealed partial class SettingsNav : UserControl
     {
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
 
         public SettingsNav()
         {

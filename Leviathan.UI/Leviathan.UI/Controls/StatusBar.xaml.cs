@@ -13,7 +13,7 @@ namespace Leviathan.UI.Controls
 {
     public sealed partial class StatusBar : UserControl
     {
-        public IVisualThemeSelector VTSelector => VisualThemeSelector.Current;
+        public IVisualThemeSelector VtSelector => VisualThemeSelector.Current;
 
         public SettingsViewModel Settings => App.Settings;
 

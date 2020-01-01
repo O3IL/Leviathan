@@ -21,7 +21,7 @@
             <TextBlock Text="{Binding}" FontFamily="{Binding}" Margin="2,2,2,2" FontSize="12"/>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid HorizontalAlignment="Stretch" Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}">
+    <Grid HorizontalAlignment="Stretch" Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}">
         <CommandBar DefaultLabelPosition="Right" IsOpen="False" HorizontalAlignment="Left" Background="{x:Null}" VerticalAlignment="Top" Height="40" Margin="0,0,208,0">
             <AppBarButton x:Uid="NewLabel" Width="Auto" MinWidth="40" LabelPosition="Collapsed" 
                           Command="{x:Bind Commands.NewDocumentCommand}" 
@@ -81,7 +81,7 @@
                         </Flyout.FlyoutPresenterStyle>
                         <ListView Width="250" Height="350"
                                           x:Name="FontListSelection"
-                                          Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
+                                          Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
                                           ItemsSource="{x:Bind Settings.AllFonts, Mode=OneWay}"
                                           ItemTemplate="{StaticResource FontFamilyComboBoxItem}"
                                           CharacterReceived="TryToFindFont"
@@ -104,7 +104,7 @@
                         </Flyout.FlyoutPresenterStyle>
                         <ListView Width="Auto" Height="350"
                                   x:Name="FontSizeListSelection"
-                                  Background="{x:Bind VTSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
+                                  Background="{x:Bind VtSelector.CurrentItem.BackgroundAcrylicBrush2, Mode=OneWay}"
                                   ItemsSource="{x:Bind Settings.AllFontSizes, Mode=OneWay}"
                                   SelectedItem="{x:Bind ViewModel.CurrentFontSize, Mode=TwoWay}"/>
                     </Flyout>

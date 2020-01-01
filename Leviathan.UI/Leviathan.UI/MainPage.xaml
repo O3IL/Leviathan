@@ -15,7 +15,7 @@
     mc:Ignorable="d"  
     FlowDirection="{x:Bind Settings.FlowDirection, Mode=OneWay}"
     KeyUp="MainPage_OnKeyUp"
-    RequestedTheme="{x:Bind VTSelector.CurrentItem.Theme, Mode=OneWay}"
+    RequestedTheme="{x:Bind VtSelector.CurrentItem.Theme, Mode=OneWay}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <converters:Converter x:Key="Converter" />
@@ -28,13 +28,20 @@
 
         <controls3:TitleBar x:Name="titleBar" Canvas.ZIndex="100" ViewModel="{x:Bind ViewModel, Mode=OneWay}" Grid.Row="0" Height="32" HorizontalAlignment="Stretch"/>
 
-        <SplitView x:Name="splitView" Grid.Row="1" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-            OpenPaneLength="360" PanePlacement="Right" IsPaneOpen="{x:Bind Settings.ShowSettings, Mode=TwoWay}">
+        <SplitView x:Name="splitView" Grid.Row="1" PaneBackground="Transparent"
+            OpenPaneLength="364" PanePlacement="Right" IsPaneOpen="{x:Bind Settings.ShowSettings, Mode=TwoWay}">
             <SplitView.Pane>
-                <Grid>
-                    <controls2:SettingsNav Canvas.ZIndex="150" 
-                               VerticalContentAlignment="Stretch" 
-                               HorizontalAlignment="Stretch"/>
+
+                <Grid Margin="4,0,0,0">
+                    <controls1:DropShadowPanel
+                    ShadowOpacity="0.3"
+                    OffsetX="0"
+                    OffsetY="0">
+                        <controls2:SettingsNav Canvas.ZIndex="150" 
+                                   VerticalContentAlignment="Stretch" 
+                                   HorizontalAlignment="Stretch"/>
+                    </controls1:DropShadowPanel>
+
                 </Grid>
             </SplitView.Pane>
 
@@ -109,7 +116,7 @@
                          TextWrapping="{x:Bind ViewModel.CurrentWordWrap, Converter={StaticResource Converter}, Mode=OneWay}" 
                          IsSpellCheckEnabled="{x:Bind Settings.SpellCheck, Mode=OneWay}" 
                          Style="{StaticResource RichEditBox}"
-                         Background="{x:Bind converters:Converter.SelectionBetweenBrush(Settings.UseAcrylic, VTSelector.CurrentItem.BackgroundAcrylicBrush, VTSelector.CurrentItem.BaseThemeBackgroundBrush), Mode=OneWay}" 
+                         Background="{x:Bind converters:Converter.SelectionBetweenBrush(Settings.UseAcrylic, VtSelector.CurrentItem.BackgroundAcrylicBrush, VtSelector.CurrentItem.BaseThemeBackgroundBrush), Mode=OneWay}" 
                          IsTapEnabled="True">
                             <RichEditBox.SelectionHighlightColorWhenNotFocused>
                                 <SolidColorBrush Color="{StaticResource SystemAccentColor}"/>
@@ -139,7 +146,7 @@
                          TextWrapping="{x:Bind ViewModel.CurrentWordWrap, Converter={StaticResource Converter}, Mode=OneWay}"
                          IsSpellCheckEnabled="{x:Bind Settings.SpellCheck, Mode=OneWay}"
                          Style="{StaticResource TextBox}"
-                         Background="{x:Bind converters:Converter.SelectionBetweenBrush(Settings.UseAcrylic, VTSelector.CurrentItem.BackgroundAcrylicBrush, VTSelector.CurrentItem.BaseThemeBackgroundBrush), Mode=OneWay}" 
+                         Background="{x:Bind converters:Converter.SelectionBetweenBrush(Settings.UseAcrylic, VtSelector.CurrentItem.BackgroundAcrylicBrush, VtSelector.CurrentItem.BaseThemeBackgroundBrush), Mode=OneWay}" 
                          IsTapEnabled="True"
                          FontFamily="{x:Bind ViewModel.CurrentFontName, Mode=OneWay}"
                          FontSize="{x:Bind ViewModel.CurrentFontSize, Mode=OneWay}"
